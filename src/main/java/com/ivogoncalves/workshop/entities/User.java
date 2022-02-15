@@ -3,11 +3,20 @@ package com.ivogoncalves.workshop.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity //O JPA transformara essa classe em uma table no bd
+@Table(name = "tb_user") //a tabela no bd tera o mesmo nome do parametro
 public class User implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
+	@Id //Dizendo ao Jpa qual desses campos sera a PK
+	@GeneratedValue(strategy = GenerationType.IDENTITY)// Dizendo que o valor do campo é autoincrementavel
 	private Long id;
 	private String name;
 	private String email;
